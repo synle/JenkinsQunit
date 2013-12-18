@@ -1,7 +1,4 @@
 <project>
-	<!--output file-->
-	<property name="OUTPUT" value="test/output" />
-	
 	<!-- ant qunit-runner (take *.html as inputs)-->
 	<target name="qunit" description="Running QUnit Test against HTML Files">
 		<delete file="${OUTPUT}.xml" />
