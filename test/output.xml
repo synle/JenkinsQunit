@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="file:///D:/Git/JenkinsQunit/index.html" hostname="localhost" tests="10" failures="2" errors="0" time="0.03" timestamp="2013-12-18T18:17:16Z">
+<testsuite id="0" name="Calc success test" hostname="localhost" tests="10" failures="2" errors="0" time="0.005" timestamp="2013-12-18T18:17:16Z">
+<testcase name="Calc.plus" tests="4" failures="0" errors="0" time="0.002" timestamp="2013-12-18T18:17:16Z">
+</testcase>
+<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0.001" timestamp="2013-12-18T18:17:16Z">
+</testcase>
+<testcase name="Calc plus failed test" tests="1" failures="1" errors="0" time="0.002" timestamp="2013-12-18T18:17:16Z">
+<failure type="AssertionFailedError" message="undefined" />
+</testcase>
+<testcase name="Calc minus failed test" tests="1" failures="1" errors="0" time="0" timestamp="2013-12-18T18:17:16Z">
+<failure type="AssertionFailedError" message="undefined">
+<actual value="1" /><expected value="2" />
+</failure>
+</testcase>
+<system-out>
+<![CDATA[
+[Calc success test, Calc plus failed test, 1] undefined
+[Calc success test, Calc minus failed test, 1] undefined
+]]>
+</system-out>
+</testsuite>
+</testsuites>
