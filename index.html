@@ -10,6 +10,7 @@
   <div id="qunit-fixture"></div>
   <script src="resource/qunit.js"></script>
   <script src="resource/blanket.js"></script>
+	<script src="resource/qunit.tab.js"></script>
   <script src="resource/qunit-reporter-junit.js"></script>  
   <script src="code/calc.js" data-cover></script>
   <script src="test/tests.js"></script>
@@ -18,6 +19,7 @@
 	QUnit.jUnitReport = function(report) {
 		console.debug(report.xml);
 	};
-  </script>
+	  //qunitTap(QUnit, function() { console.log.apply(console, arguments); });
+	</script>
 </body>
 </html>

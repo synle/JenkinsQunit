@@ -11,6 +11,9 @@
 		<delete file="${OUTPUT}" />
 
 		<echo message="File(s) to be tested: ${TEST_HTML_FILES}"/>
+		
+		
+		<!-- generating junit xml-->
 		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit">
 			<arg line="runner.js ${TEST_HTML_FILES}" />
 			<redirector output="${OUTPUT}" alwayslog="false"/>  
