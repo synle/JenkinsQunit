@@ -1,4 +1,8 @@
 var Calc = {
-	plus: function(a,b){return a  + b;},
-	minus: function(a,b){return a - b;}
+	plus : function (a, b) {
+		return a + b;
+	},
+	minus : function (a, b) {
+		return a - b;
+	}
 }

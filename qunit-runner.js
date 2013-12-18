@@ -110,16 +110,20 @@ QUnitRunner.prototype = {
 		extend(QUnit.config, oldconfig);
  
 		QUnit.testStart = function() {
+			console.log('QUnit.testStart');
 			testStart = new Date();
 		};
  
 		QUnit.moduleStart = function(context) {
+			console.log('QUnit.moduleStart');
 			moduleStart = new Date();
 			module = context.name;
 			testCases = [];
 		};
  
 		QUnit.moduleDone = function(context) {
+			console.log('QUnit.moduleDone');
+		
 			// context = { name, failed, passed, total }
 			var xml = '\t<testsuite name="' + context.name + '" errors="0" failures="' + context.failed + '" tests="' + context.total + '" time="' + (new Date() - moduleStart) / 1000 + '"';
 			if (testCases.length) {
@@ -136,6 +140,8 @@ QUnitRunner.prototype = {
 		};
  
 		QUnit.testDone = function(result) {
+			console.log('QUnit.moduleDone');
+			
 			if (0 === result.failed) {
 				testsPassed++;
 			} else {
