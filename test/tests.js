@@ -1,5 +1,4 @@
-module('Calc.js Testing Module');  
-test("Calc.plus", function() {
+test("Calc plus", function() {
   equal(Calc.plus(1,2), 3);
   equal(Calc.plus(-3,-5), -8);
   equal(Calc.plus(1,-10),-9);
@@ -9,7 +8,7 @@ test("Calc.plus", function() {
 
 
 
-test("Calc.minus", function() {
+test("Calc minus", function() {
   equal(Calc.minus(1,2), -1);
   equal(Calc.minus(-3,-5), 2);
   equal(Calc.minus(1,-10),11);

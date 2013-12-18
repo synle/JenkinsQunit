@@ -1,0 +1,14 @@
+<project>
+	<target name="qunit" description="runs QUnit tests using PhantomJS">
+		<echo message="Clean up"/>
+		<delete file="output.xml" />
+	
+		<!-- QUnit Javascript Unit Tests -->
+		<echo message="Executing QUnit Javascript Unit Tests..."/>
+		<exec executable="phantomjs">
+			<arg line="qunit-runner.js --qunit resource/qunit.js --package package.json --tests test --junit output.xml" />
+		</exec>
+	</target>
+</project>
+
+
