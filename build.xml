@@ -2,13 +2,13 @@
 	<target name="qunit" description="runs QUnit tests using PhantomJS">
 		<echo message="Clean up"/>
 		<delete file="output.xml" />
-	
+
 		<!-- QUnit Javascript Unit Tests -->
 		<echo message="Executing QUnit Javascript Unit Tests..."/>
 		<exec executable="phantomjs" resultproperty="exitCode">
 			<arg line="qunit-runner.js --qunit resource/qunit.js --package package.json --tests test --junit output.xml" />
 		</exec>
-		
+
 		<fail message="Qunit Test failed">
 			<condition>
 				<not>
@@ -17,19 +17,18 @@
 			</condition>
 		</fail>
 	</target>
-	
-	
+
+
 	<target name="qunit-runner" description="runs QUnit tests using PhantomJS">
 		<echo message="Clean up"/>
 		<delete file="output.xml" />
-	
+
 		<echo message="Executing QUnit Javascript Unit Tests..."/>
-		<exec executable="phantomjs" resultproperty="exitCode">
+		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit">
 			<arg line="runner.js index.html" />
+			<redirector output="output.qunit.xml" alwayslog="true"/>  
 		</exec>
-		
-		<echo>${exitCode}</echo>
-		
+
 		<fail message="Qunit Test failed">
 			<condition>
 				<not>

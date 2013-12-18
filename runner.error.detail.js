@@ -13,13 +13,11 @@
 
 /*global phantom:false, require:false, console:false, window:false, QUnit:false */
 
-(function () {
+(function() {
 	'use strict';
 
-	var url,
-	page,
-	timeout,
-	args = require('system').args;
+	var url, page, timeout,
+		args = require('system').args;
 
 	// arg[0]: scriptName, args[1...]: arguments
 	if (args.length < 2 || args.length > 3) {
@@ -33,18 +31,18 @@
 		timeout = parseInt(args[2], 10);
 	}
 
-	// Route `//console.log()` calls from within the Page context to the main Phantom context (i.e. current `this`)
-	page.onConsoleMessage = function (msg) {
+	// Route `console.log()` calls from within the Page context to the main Phantom context (i.e. current `this`)
+	page.onConsoleMessage = function(msg) {
 		console.log(msg);
 	};
 
-	page.onInitialized = function () {
+	page.onInitialized = function() {
 		page.evaluate(addLogging);
 	};
 
-	page.onCallback = function (message) {
+	page.onCallback = function(message) {
 		var result,
-		failed;
+			failed;
 
 		if (message) {
 			if (message.name === 'QUnit.done') {
@@ -60,16 +58,14 @@
 		}
 	};
 
-	page.open(url, function (status) {
+	page.open(url, function(status) {
 		if (status !== 'success') {
 			console.error('Unable to access network: ' + status);
 			phantom.exit(1);
 		} else {
 			// Cannot do this verification with the 'DOMContentLoaded' handler because it
 			// will be too late to attach it if a page does not have any script tags.
-			var qunitMissing = page.evaluate(function () {
-					return (typeof QUnit === 'undefined' || !QUnit);
-				});
+			var qunitMissing = page.evaluate(function() { return (typeof QUnit === 'undefined' || !QUnit); });
 			if (qunitMissing) {
 				console.error('The `QUnit` object is not present on this page.');
 				phantom.exit(1);
@@ -77,7 +73,7 @@
 
 			// Set a timeout on the test running, otherwise tests with async problems will hang forever
 			if (typeof timeout === 'number') {
-				setTimeout(function () {
+				setTimeout(function() {
 					console.error('The specified timeout of ' + timeout + ' seconds has expired. Aborting...');
 					phantom.exit(1);
 				}, timeout * 1000);
@@ -88,10 +84,10 @@
 	});
 
 	function addLogging() {
-		window.document.addEventListener('DOMContentLoaded', function () {
+		window.document.addEventListener('DOMContentLoaded', function() {
 			var currentTestAssertions = [];
 
-			QUnit.log(function (details) {
+			QUnit.log(function(details) {
 				var response;
 
 				// Ignore passing assertions
@@ -116,32 +112,41 @@
 				currentTestAssertions.push('Failed assertion: ' + response);
 			});
 
-			QUnit.testDone(function (result) {
+			QUnit.testDone(function(result) {
 				var i,
-				len,
-				name = result.module + ': ' + result.name;
+					len,
+					name = result.module + ': ' + result.name;
 
 				if (result.failed) {
-					//console.log('Test failed: ' + name);
+					console.log('Test failed: ' + name);
 
 					for (i = 0, len = currentTestAssertions.length; i < len; i++) {
-						//console.log('    ' + currentTestAssertions[i]);
+						console.log('    ' + currentTestAssertions[i]);
 					}
 				}
 
 				currentTestAssertions.length = 0;
 			});
 
-			QUnit.done(function (result) {
-				//console.log('Took ' + result.runtime +  'ms to run ' + result.total + ' tests. ' + result.passed + ' passed, ' + result.failed + ' failed.');
+			QUnit.done(function(result) {
+				console.log('Took ' + result.runtime +  'ms to run ' + result.total + ' tests. ' + result.passed + ' passed, ' + result.failed + ' failed.');
 
 				if (typeof window.callPhantom === 'function') {
 					window.callPhantom({
-						'name' : 'QUnit.done',
-						'data' : result
+						'name': 'QUnit.done',
+						'data': result
 					});
 				}
 			});
 		}, false);
 	}
 })();
+
+var fs = require('fs');
+fs.writeFile("output.qunit.detail.xml", "Hey there!", function(err) {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log("The file was saved!");
+    }
+}); 
