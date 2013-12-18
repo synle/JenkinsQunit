@@ -1,4 +1,4 @@
-<project>`
+<project>
 	<!--output file-->
 	<property name="OUTPUT" value="test/output" />
 	
@@ -7,19 +7,19 @@
 		<delete file="${OUTPUT}.xml" />
 		<delete file="${OUTPUT}.tap" />
 
-		<echo message="File(s) to be tested: ${env.TEST_FILES}"/>
+		<echo message="File(s) to be tested: ${TEST_HTML_FILES}"/>
 		
 		<!-- generate tap-->
 		<echo message="Generate XML"/>
 		<exec executable="phantomjs" taskname="qunit tap">
-			<arg line="runner.junit.xml.js ${env.TEST_FILES}" />
+			<arg line="runner.junit.xml.js ${TEST_HTML_FILES}" />
 			<redirector output="${OUTPUT}.xml" alwayslog="false"/>
 		</exec>
 		
 		<!-- generating junit xml-->
 		<echo message="Generate TAP"/>
 		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit junit xml">
-			<arg line="runner.tap.js ${env.TEST_FILES}" />
+			<arg line="runner.tap.js ${TEST_HTML_FILES}" />
 			<redirector output="${OUTPUT}.tap" alwayslog="false"/>  
 		</exec>
 
