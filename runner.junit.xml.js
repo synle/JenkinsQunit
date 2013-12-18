@@ -40,6 +40,7 @@
 
 	page.onInitialized = function () {
 		page.evaluate(addLogging);
+
 	};
 
 	page.onCallback = function (message) {
@@ -88,6 +89,12 @@
 	});
 
 	function addLogging() {
+		window.produceQunitOutput = function () {
+			QUnit.jUnitReport = function (report) {
+				console.debug(report.xml);
+			};
+		}
+		
 		window.document.addEventListener('DOMContentLoaded', function () {
 			var currentTestAssertions = [];
 

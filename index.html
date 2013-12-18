@@ -16,10 +16,8 @@
   <script src="test/tests.js"></script>
   <script src="test/failed-test.js"></script>
   <script>
-	QUnit.jUnitReport = function(report) {
-		console.debug(report.xml);
-	};
-	  //qunitTap(QUnit, function() { console.log.apply(console, arguments); });
-	</script>
+	if (typeof produceQunitOutput === 'function')
+		produceQunitOutput();
+  </script>
 </body>
 </html>

@@ -3,22 +3,30 @@
 	<property name="TEST_HTML_FILES" value="index.html" />
 	
 	<!--output file-->
-	<property name="OUTPUT" value="test/output.xml" />
+	<property name="OUTPUT" value="test/output" />
 	
 	<!-- ant qunit-runner (take *.html as inputs)-->
 	<target name="qunit" description="Running QUnit Test against HTML Files">
-		<echo message="${OUTPUT}"/>
-		<delete file="${OUTPUT}" />
+		<delete file="${OUTPUT}.xml" />
+		<delete file="${OUTPUT}.tap" />
 
 		<echo message="File(s) to be tested: ${TEST_HTML_FILES}"/>
 		
+		<!-- generate tap-->
+		<echo message="Generate XML"/>
+		<exec executable="phantomjs" taskname="qunit tap">
+			<arg line="runner.junit.xml.js ${TEST_HTML_FILES}" />
+			<redirector output="${OUTPUT}.xml" alwayslog="false"/>
+		</exec>
 		
 		<!-- generating junit xml-->
-		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit">
-			<arg line="runner.js ${TEST_HTML_FILES}" />
-			<redirector output="${OUTPUT}" alwayslog="false"/>  
+		<echo message="Generate TAP"/>
+		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit junit xml">
+			<arg line="runner.tap.js ${TEST_HTML_FILES}" />
+			<redirector output="${OUTPUT}.tap" alwayslog="false"/>  
 		</exec>
 
+		
 		<fail message="Qunit Test failed">
 			<condition>
 				<not>
