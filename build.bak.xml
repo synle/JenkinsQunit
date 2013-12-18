@@ -1,6 +1,6 @@
 <project>
 	<!-- js file to test used in ant qunit-runner-->
-	<property name="TEST_HTML_FILES" value="${env.TEST_FILES}" />
+	<property name="TEST_HTML_FILES" value="index.html" />
 	
 	<!--output file-->
 	<property name="OUTPUT" value="test/output" />
