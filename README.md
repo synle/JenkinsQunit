@@ -38,6 +38,33 @@ publish junit xml
 test/output.xml
 ```
 
+
+Changes Made to Index.html
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Example</title>
+  <link rel="stylesheet" href="resource/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="resource/qunit.js"></script>
+  <script src="resource/qunit.tab.js"></script>
+  <script src="resource/qunit-reporter-junit.js"></script>  
+  <script src="code/calc.js" data-cover></script>
+  <script src="test/tests.js"></script>
+  <script src="test/failed-test.js"></script>
+  <script>
+	if (typeof produceQunitOutput === 'function')
+		produceQunitOutput();
+  </script>
+</body>
+</html>
+```
+
 Sample Run
 ```
 D:\Git\JenkinsQunit>ant qunit
@@ -113,5 +140,4 @@ Sample JUnit XML File
 </system-out>
 </testsuite>
 </testsuites>
-
 ```
