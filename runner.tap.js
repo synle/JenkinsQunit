@@ -90,9 +90,9 @@
 	function addLogging() {
 		//added by sy to support print of tap or junit xml
 		window.produceQunitOutput = function () {
-			QUnit.jUnitReport = function (report) {
-				console.debug(report.xml);
-			};
+			qunitTap(QUnit, function () {
+				console.log.apply(console, arguments);
+			});
 		}
 
 		window.document.addEventListener('DOMContentLoaded', function () {
