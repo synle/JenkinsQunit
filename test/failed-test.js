@@ -1,4 +1,4 @@
-module("Calc success test");
+module("failed-test.js");
 test("Calc plus failed test", function () {
 	equal(1, 0);
 });

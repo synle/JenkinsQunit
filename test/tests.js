@@ -1,4 +1,4 @@
-module("Calc success test");
+module("test.js");
 test("Calc.plus", function () {
 	equal(Calc.plus(1, 2), 3);
 	equal(Calc.plus(-3, -5), -8);
