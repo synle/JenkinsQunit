@@ -7,7 +7,7 @@
 	
 	<!-- ant qunit-runner (take *.html as inputs)-->
 	<target name="qunit" description="Running QUnit Test against HTML Files">
-		<echo message="Delete old JUnit XML : ${OUTPUT}"/>
+		<echo message="${OUTPUT}"/>
 		<delete file="${OUTPUT}" />
 
 		<echo message="File(s) to be tested: ${TEST_HTML_FILES}"/>
