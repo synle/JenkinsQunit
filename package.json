@@ -23,4 +23,4 @@
     "grunt": "~0.4.2",
     "grunt-contrib-qunit": "~0.3.0"
   }
-}
+}
