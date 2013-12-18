@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="file:///D:/Git/JenkinsQunit/index.html" hostname="localhost" tests="10" failures="2" errors="0" time="0.02" timestamp="2013-12-18T16:29:14Z">
-<testsuite id="0" name="undefined" hostname="localhost" tests="0" failures="0" errors="0" time="0" timestamp="2013-12-18T16:29:14Z">
-<testcase name="Calc plus" tests="4" failures="0" errors="0" time="0.002" timestamp="2013-12-18T16:29:14Z">
+<testsuites name="file:///D:/Git/JenkinsQunit/index.html" hostname="localhost" tests="10" failures="2" errors="0" time="0.033" timestamp="2013-12-18T17:56:03Z">
+<testsuite id="0" name="Calc success test" hostname="localhost" tests="10" failures="2" errors="0" time="0.006" timestamp="2013-12-18T17:56:03Z">
+<testcase name="Calc.plus" tests="4" failures="0" errors="0" time="0.003" timestamp="2013-12-18T17:56:03Z">
 </testcase>
-<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0.001" timestamp="2013-12-18T16:29:14Z">
+<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0" timestamp="2013-12-18T17:56:03Z">
 </testcase>
-<testcase name="Calc plus failed test" tests="1" failures="1" errors="0" time="0.001" timestamp="2013-12-18T16:29:14Z">
+<testcase name="Calc plus failed test" tests="1" failures="1" errors="0" time="0.002" timestamp="2013-12-18T17:56:03Z">
 <failure type="AssertionFailedError" message="undefined" />
 </testcase>
-<testcase name="Calc minus failed test" tests="1" failures="1" errors="0" time="0.001" timestamp="2013-12-18T16:29:14Z">
+<testcase name="Calc minus failed test" tests="1" failures="1" errors="0" time="0.001" timestamp="2013-12-18T17:56:03Z">
 <failure type="AssertionFailedError" message="undefined">
 <actual value="1" /><expected value="2" />
 </failure>
 </testcase>
 <system-out>
 <![CDATA[
-[undefined, Calc plus failed test, 1] undefined
-[undefined, Calc minus failed test, 1] undefined
+[Calc success test, Calc plus failed test, 1] undefined
+[Calc success test, Calc minus failed test, 1] undefined
 ]]>
 </system-out>
 </testsuite>

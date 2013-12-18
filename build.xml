@@ -1,14 +1,24 @@
 <project>
-	<target name="qunit" description="runs QUnit tests using PhantomJS">
+	<!-- js file to test used in ant qunit-->
+	<property name="TEST_JS_FILE" value="test" />
+
+	<!-- js file to test used in ant qunit-runner-->
+	<property name="TEST_HTML_FILES" value="index.html" />
+	
+	<!--output file-->
+	<property name="OUTPUT" value="test.output.xml" />
+	
+	
+	<!-- ant qunit [pointing to js files instead]-->
+	<target name="qunit" description="Running QUnit Test against test.js">
 		<echo message="Clean up"/>
-		<delete file="output.xml" />
+		<delete file="${OUTPUT}" />
 
 		<!-- QUnit Javascript Unit Tests -->
 		<echo message="Executing QUnit Javascript Unit Tests..."/>
 		<exec executable="phantomjs" resultproperty="exitCode">
-			<arg line="qunit-runner.js --qunit resource/qunit.js --package package.json --tests test --junit output.xml" />
+			<arg line="qunit-runner.js --qunit resource/qunit.js --package package.json --tests ${TEST_JS_FILE} --junit ${OUTPUT}" />
 		</exec>
-
 		<fail message="Qunit Test failed">
 			<condition>
 				<not>
@@ -17,16 +27,17 @@
 			</condition>
 		</fail>
 	</target>
-
-
-	<target name="qunit-runner" description="runs QUnit tests using PhantomJS">
+	
+	
+	<!-- ant qunit-runner (take *.html as inputs)-->
+	<target name="qunit-runner" description="Running QUnit Test against HTML Files">
 		<echo message="Clean up"/>
-		<delete file="output.xml" />
+		<delete file="${OUTPUT}" />
 
 		<echo message="Executing QUnit Javascript Unit Tests..."/>
 		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit">
-			<arg line="runner.js index.html" />
-			<redirector output="output.qunit.xml" alwayslog="true"/>  
+			<arg line="runner.js ${TEST_HTML_FILES}" />
+			<redirector output="${OUTPUT}" alwayslog="true"/>  
 		</exec>
 
 		<fail message="Qunit Test failed">
