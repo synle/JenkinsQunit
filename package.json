@@ -1,3 +1,26 @@
 {
-	scripts : ['code/calc.js']
+  "name": "JenkinsQunit",
+  "version": "0.0.0",
+  "description": "PhantomJS\r http://phantomjs.org/",
+  "main": "qunit-reporter-junit.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lenguyensy/JenkinsQunit.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lenguyensy/JenkinsQunit/issues"
+  },
+  "homepage": "https://github.com/lenguyensy/JenkinsQunit",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-qunit": "~0.3.0"
+  }
 }
