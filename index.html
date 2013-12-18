@@ -12,14 +12,14 @@
   
   <!--qunit-->
   <script src="resource/qunit.js"></script>
-  <script src="resource/blanket.js"></script>
+  <script src="resource/blanket.js" data-cover-reporter="resource/blanket.reporter.js"></script>
   <script src="resource/qunit.tab.js"></script>
   <script src="resource/qunit-reporter-junit.js"></script>  
 
 	<!--tests-->
   <script src="test/tests.js"></script>
   <script src="test/failed-test.js"></script>
-  <script>
+  <script>  
 	if (typeof produceQunitOutput === 'function')
 		produceQunitOutput();
   </script>
