@@ -1,15 +1,27 @@
+Author: Sy Le
+Description: Integrate Qunit Testing into Jenkins CI with the use of PhantomJS, QUnit, TAP and JUnit XML
+
 PhantomJS
 http://phantomjs.org/
 
-PhantomJS - Qunit Runner
-https://gist.github.com/gcoop/1588423
+QUnit
 
-How To Run
-phantomjs qunit-runner.js --qunit resource/qunit.js --package package.json --tests test --junit output.xml
+QUnit Reporter JUnit
+https://github.com/jquery/qunit-reporter-junit
 
 Ant build
+```
 ant qunit
+```
 
+Generated Phantomjs shell
+```
+to generate junit xml
+phantomjs runner.junit.xml.js index.html
+
+to generate tap (test anything protocol)
+phantomjs runner.tap.js index.html
+```
 
 Jenkins Pre-Build Config
 ```
