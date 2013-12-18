@@ -21,6 +21,7 @@
   "homepage": "https://github.com/lenguyensy/JenkinsQunit",
   "devDependencies": {
     "grunt": "~0.4.2",
+	"grunt-cli": "*",
     "grunt-contrib-qunit": "~0.3.0"
   }
 }
