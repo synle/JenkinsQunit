@@ -11,7 +11,7 @@ https://github.com/jquery/qunit-reporter-junit
 
 Ant build
 ```
-ant qunit -DTEST_HTML_FILES=index.html -DOUTPUT=test/output
+ant -DTEST_HTML_FILES=index.html -DOUTPUT=result/output qunit
 ```
 
 Generated Phantomjs shell
