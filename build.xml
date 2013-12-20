@@ -24,7 +24,7 @@
 	<!--test-->
 	<target name="qunit.junit" description="Generate JUnit Test">
 		<echo message="Generate XML"/>
-		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit tap">
+		<exec executable="phantomjs" taskname="qunit tap">
 			<arg line="resource/runner.junit.xml.js ${TEST_HTML_FILES}" />
 			<redirector output="${OUTPUT}/output.xml" alwayslog="false"/>
 		</exec>
@@ -32,7 +32,7 @@
 
 	<target name="qunit.tap" description="Generate Tap">
 		<echo message="Generate TAP"/>
-		<exec executable="phantomjs" taskname="qunit junit xml">
+		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit junit xml">
 			<arg line="resource/runner.tap.js ${TEST_HTML_FILES}" />
 			<redirector output="${OUTPUT}/output.tap" alwayslog="false"/>  
 		</exec>
