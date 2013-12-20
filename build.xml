@@ -1,25 +1,41 @@
 <project>
-	<!-- ant qunit-runner (take *.html as inputs)-->
-	<target name="qunit" description="Running QUnit Test against HTML Files">
-		<delete file="${OUTPUT}.xml" />
-		<delete file="${OUTPUT}.tap" />
+	<property name="JS_COVER_PORT">8081</property>
 
+	<!---ant test -DTEST_HTML_FILES=index.html -DOUTPUT=result-->
+	<target name="test">
 		<echo message="File(s) to be tested: ${TEST_HTML_FILES}"/>
-		
-		<!-- generate tap-->
-		<echo message="Generate XML"/>
-		<exec executable="phantomjs" taskname="qunit tap">
-			<arg line="runner.junit.xml.js ${TEST_HTML_FILES}" />
-			<redirector output="${OUTPUT}.xml" alwayslog="false"/>
-		</exec>
-		
-		<!-- generating junit xml-->
-		<echo message="Generate TAP"/>
-		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit junit xml">
-			<arg line="runner.tap.js ${TEST_HTML_FILES}" />
-			<redirector output="${OUTPUT}.tap" alwayslog="false"/>  
-		</exec>
+		<antcall target="cleanup"/>				
+		<antcall target="coverage.jscover"/>
+		<antcall target="coverage.phantomjs"/>
+		<antcall target="coverage.convert"/>
+		<antcall target="qunit.junit"/>
+		<antcall target="qunit.tap"/>		
+	</target>
 
+
+	<target name="cleanup" description="Clean up old report">
+		<delete file="${OUTPUT}/output.tap" />
+		<delete file="${OUTPUT}/output.xml" />
+		<delete file="${OUTPUT}/stop.txt" />
+		<delete dir="${OUTPUT}/sonar" />
+	</target>
+
+
+	<!--test-->
+	<target name="qunit.junit" description="Generate JUnit Test">
+		<echo message="Generate XML"/>
+		<exec executable="phantomjs" resultproperty="exitCode" taskname="qunit tap">
+			<arg line="resource/runner.junit.xml.js ${TEST_HTML_FILES}" />
+			<redirector output="${OUTPUT}/output.xml" alwayslog="false"/>
+		</exec>
+	</target>
+
+	<target name="qunit.tap" description="Generate Tap">
+		<echo message="Generate TAP"/>
+		<exec executable="phantomjs" taskname="qunit junit xml">
+			<arg line="resource/runner.tap.js ${TEST_HTML_FILES}" />
+			<redirector output="${OUTPUT}/output.tap" alwayslog="false"/>  
+		</exec>
 		
 		<fail message="Qunit Test failed">
 			<condition>
@@ -28,5 +44,47 @@
 				</not>
 			</condition>
 		</fail>
+	</target>
+
+	<!--coverage-->
+	<target name="coverage.jscover" description="JSCover Server Spawn">
+		<echo message="JS Server Spawn on Port ${JS_COVER_PORT}"/>
+		<java jar="resource/JSCover-all.jar" fork="true" spawn="true">
+			<arg line="-ws --report-dir=${OUTPUT}/sonar --document-root=. --port=${JS_COVER_PORT} --no-instrument=resource --no-instrument=test"/>
+		</java>
+
+		<waitfor maxwait="10" maxwaitunit="second" checkevery="250" checkeveryunit="millisecond" timeoutproperty="failed">
+			<http url="http://localhost:${JS_COVER_PORT}/jscoverage.html"/>
+		</waitfor>
+
+		<fail if="failed"/>
+	</target>
+
+
+	<target name="coverage.phantomjs" description="Hitting JSCover Server with PhantomJS">
+		<echo message="Hitting JSCover Server with PhantomJS"/>
+		<echo message="http://localhost:${JS_COVER_PORT}/${TEST_HTML_FILES}" />
+		<exec executable="phantomjs" taskname="coverage phantomjs">
+			<arg line="resource/run-jscover-qunit.js http://localhost:${JS_COVER_PORT}/${TEST_HTML_FILES}"/>
+		</exec>
+
+
+		<echo message="Stop Server ${JS_COVER_PORT}" />
+		<get src="http://localhost:${JS_COVER_PORT}/stop" dest="${OUTPUT}/stop.txt" />
+	</target>	
+
+
+	<target name="coverage.convert" description="convert report to sonar">
+		<exec executable="java" taskname="conver sonar LCOV">
+			<arg line="-cp resource/JSCover-all.jar jscover.report.Main --format=LCOV ${OUTPUT}/sonar/phantom ${OUTPUT}/sonar/phantom"/>
+		</exec>
+
+		<exec executable="java" taskname="convert COBERTURAXML">
+			<arg line="-cp resource/JSCover-all.jar jscover.report.Main --format=COBERTURAXML ${OUTPUT}/sonar/phantom ${OUTPUT}/sonar/phantom"/>
+		</exec>
+
+		<exec executable="java" taskname="convert XMLSUMMARY">
+			<arg line="-cp resource/JSCover-all.jar jscover.report.Main --format=XMLSUMMARY ${OUTPUT}/sonar/phantom"/>
+		</exec>
 	</target>
 </project>

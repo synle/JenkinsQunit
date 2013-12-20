@@ -1,0 +1,31 @@
+# module: test.js
+# test: Calc.plus
+ok 1
+ok 2
+ok 3
+ok 4
+# test: Calc minus
+ok 5
+ok 6
+ok 7
+ok 8
+# module: failed-test.js
+# test: Calc plus failed test
+not ok 9 - expected: 3, got: 1002, test: Calc plus failed test, module: failed-test.js, source: at file:///D:/Git/JenkinsJasmine/resource/qunit.js:556
+#     at file:///D:/Git/JenkinsJasmine/test/failed-test.js:3
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:203
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:361
+#     at process (file:///D:/Git/JenkinsJasmine/resource/qunit.js:1453)
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:479
+not ok 10 - Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+#     at file:///D:/Git/JenkinsJasmine/test/failed-test.js:5: Calc.plus does not supported number greater than 1000, test: Calc plus failed test, module: failed-test.js
+# test: Calc minus failed test
+not ok 11 - expected: 3, got: 998, test: Calc minus failed test, module: failed-test.js, source: at file:///D:/Git/JenkinsJasmine/resource/qunit.js:556
+#     at file:///D:/Git/JenkinsJasmine/test/failed-test.js:8
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:203
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:361
+#     at process (file:///D:/Git/JenkinsJasmine/resource/qunit.js:1453)
+#     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:479
+not ok 12 - Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+#     at file:///D:/Git/JenkinsJasmine/test/failed-test.js:10: Calc.minus does not supported number greater than 1000, test: Calc minus failed test, module: failed-test.js
+1..12

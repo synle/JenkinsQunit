@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="file:///D:/Git/JenkinsQunit/index.html" hostname="localhost" tests="12" failures="4" errors="0" time="0.033" timestamp="2013-12-19T00:01:35Z">
-<testsuite id="0" name="test.js" hostname="localhost" tests="8" failures="0" errors="0" time="0.003" timestamp="2013-12-19T00:01:35Z">
-<testcase name="Calc.plus" tests="4" failures="0" errors="0" time="0.002" timestamp="2013-12-19T00:01:35Z">
+<testsuites name="file:///D:/Git/JenkinsJasmine/index.html" hostname="localhost" tests="12" failures="4" errors="0" time="0.021" timestamp="2013-12-20T01:08:24Z">
+<testsuite id="0" name="test.js" hostname="localhost" tests="8" failures="0" errors="0" time="0.002" timestamp="2013-12-20T01:08:25Z">
+<testcase name="Calc.plus" tests="4" failures="0" errors="0" time="0.002" timestamp="2013-12-20T01:08:25Z">
 </testcase>
-<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0.001" timestamp="2013-12-19T00:01:35Z">
+<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0" timestamp="2013-12-20T01:08:25Z">
 </testcase>
 </testsuite>
-<testsuite id="1" name="failed-test.js" hostname="localhost" tests="4" failures="4" errors="0" time="0.003" timestamp="2013-12-19T00:01:35Z">
-<testcase name="Calc plus failed test" tests="2" failures="2" errors="0" time="0.001" timestamp="2013-12-19T00:01:35Z">
+<testsuite id="1" name="failed-test.js" hostname="localhost" tests="4" failures="4" errors="0" time="0.003" timestamp="2013-12-20T01:08:25Z">
+<testcase name="Calc plus failed test" tests="2" failures="2" errors="0" time="0.002" timestamp="2013-12-20T01:08:25Z">
 <failure type="AssertionFailedError" message="undefined">
 <actual value="1002" /><expected value="3" />
 </failure>
-<failure type="AssertionFailedError" message="Died on test #2     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
-    at file:///D:/Git/JenkinsQunit/test/failed-test.js:5: Calc.plus does not supported number greater than 1000" />
+<failure type="AssertionFailedError" message="Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+    at file:///D:/Git/JenkinsJasmine/test/failed-test.js:5: Calc.plus does not supported number greater than 1000" />
 </testcase>
-<testcase name="Calc minus failed test" tests="2" failures="2" errors="0" time="0.001" timestamp="2013-12-19T00:01:35Z">
+<testcase name="Calc minus failed test" tests="2" failures="2" errors="0" time="0" timestamp="2013-12-20T01:08:25Z">
 <failure type="AssertionFailedError" message="undefined">
 <actual value="998" /><expected value="3" />
 </failure>
-<failure type="AssertionFailedError" message="Died on test #2     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
-    at file:///D:/Git/JenkinsQunit/test/failed-test.js:10: Calc.minus does not supported number greater than 1000" />
+<failure type="AssertionFailedError" message="Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+    at file:///D:/Git/JenkinsJasmine/test/failed-test.js:10: Calc.minus does not supported number greater than 1000" />
 </testcase>
 <system-out>
 <![CDATA[
 [failed-test.js, Calc plus failed test, 1] undefined
-[failed-test.js, Calc plus failed test, 2] Died on test #2     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
-    at file:///D:/Git/JenkinsQunit/test/failed-test.js:5: Calc.plus does not supported number greater than 1000
+[failed-test.js, Calc plus failed test, 2] Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+    at file:///D:/Git/JenkinsJasmine/test/failed-test.js:5: Calc.plus does not supported number greater than 1000
 [failed-test.js, Calc minus failed test, 1] undefined
-[failed-test.js, Calc minus failed test, 2] Died on test #2     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
-    at file:///D:/Git/JenkinsQunit/test/failed-test.js:10: Calc.minus does not supported number greater than 1000
+[failed-test.js, Calc minus failed test, 2] Died on test #2     at file:///D:/Git/JenkinsJasmine/resource/qunit.js:425
+    at file:///D:/Git/JenkinsJasmine/test/failed-test.js:10: Calc.minus does not supported number greater than 1000
 ]]>
 </system-out>
 </testsuite>
