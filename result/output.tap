@@ -1,0 +1,18 @@
+# module: test.js
+# test: Calc.plus
+ok 1
+ok 2
+ok 3
+ok 4
+# test: Calc minus
+ok 5
+ok 6
+ok 7
+ok 8
+# test: Calc.plus
+not ok 9 - Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+#     at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:8: Calc.plus does not supported number greater than 1000, test: Calc.plus, module: test.js
+# test: Calc minus
+not ok 10 - Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+#     at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:16: Calc.minus does not supported number greater than 1000, test: Calc minus, module: test.js
+1..10

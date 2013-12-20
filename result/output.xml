@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="file:///D:/Git/JenkinsQunit/random.html" hostname="localhost" tests="10" failures="2" errors="0" time="0.018" timestamp="2013-12-20T21:40:48Z">
+<testsuite id="0" name="test.js" hostname="localhost" tests="10" failures="2" errors="0" time="0.003" timestamp="2013-12-20T21:40:48Z">
+<testcase name="Calc.plus" tests="4" failures="0" errors="0" time="0.001" timestamp="2013-12-20T21:40:48Z">
+</testcase>
+<testcase name="Calc minus" tests="4" failures="0" errors="0" time="0" timestamp="2013-12-20T21:40:48Z">
+</testcase>
+<testcase name="Calc.plus" tests="1" failures="1" errors="0" time="0" timestamp="2013-12-20T21:40:48Z">
+<failure type="AssertionFailedError" message="Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+    at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:8: Calc.plus does not supported number greater than 1000" />
+</testcase>
+<testcase name="Calc minus" tests="1" failures="1" errors="0" time="0.001" timestamp="2013-12-20T21:40:48Z">
+<failure type="AssertionFailedError" message="Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+    at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:16: Calc.minus does not supported number greater than 1000" />
+</testcase>
+<system-out>
+<![CDATA[
+[test.js, Calc.plus, 1] Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+    at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:8: Calc.plus does not supported number greater than 1000
+[test.js, Calc minus, 1] Died on test #1     at file:///D:/Git/JenkinsQunit/resource/qunit.js:425
+    at file:///D:/Git/JenkinsQunit/test/calc-random-test.js:16: Calc.minus does not supported number greater than 1000
+]]>
+</system-out>
+</testsuite>
+</testsuites>
