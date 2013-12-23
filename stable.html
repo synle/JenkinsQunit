@@ -7,17 +7,18 @@
 </head>
 <body>
   <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-  <script src="code/calc.js"></script>
-  
+  <div id="qunit-fixture"></div>  
   <!--qunit-->
   <script src="resource/qunit.js"></script>
   <script src="resource/qunit.tab.js"></script>
   <script src="resource/qunit-reporter-junit.js"></script>  
   <script src="resource/blanket.js"></script>  
+  
+  <!--my code-->
+  <script src="code/calc.js" data-cover></script>
 
 	<!--tests-->
-  <script src="test/tests.js" data-cover></script>
+  <script src="test/tests.js"></script>
   
   <script>  
 	if (typeof produceQunitOutput === 'function')
